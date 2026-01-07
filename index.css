@@ -10,3 +10,11 @@ body{
     min-height: 100vh;
     background-color: #f4e4ba
 }
+
+.container{
+    background-color: white;
+    padding: 2rem;
+    border-radius: 2rem;
+    min-height: 45vh;
+    width: 40vh;
+}
