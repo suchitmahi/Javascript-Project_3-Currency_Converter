@@ -69,3 +69,8 @@ form input{
     font-size: 0.9rem;
     width: auto;
 }
+
+.msg{
+    margin: 2rem 0 2rem 0;
+    font-size: 1.2rem;
+}
