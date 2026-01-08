@@ -1,6 +1,7 @@
 const BASE_URL = "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1"
 
 const dropdowns = document.querySelectorAll(".dropdown select");
+const btn = document.querySelector("form button");
 
 for(let select of dropdowns){
     for (currCode in countryList) {
@@ -26,3 +27,13 @@ const updateFlag = (element) => {
     let img = element.parentElement.querySelector("img");
     img.src = newSrc;
 }
+
+btn.addEventListener("click", (evt) => {
+    evt.preventDefault();
+    let amount = document.querySelector(".amount input");
+    let amtVal = amount.value;
+    if (amtVal === "" || amtVal < 1){
+        amtVal = 1;
+        amount.value = "1";
+    }
+});
