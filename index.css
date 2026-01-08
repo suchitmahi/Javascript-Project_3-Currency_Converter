@@ -74,3 +74,11 @@ form input{
     margin: 2rem 0 2rem 0;
     font-size: 1.2rem;
 }
+
+form button{
+    height: 3rem;
+    background-color: #af4d98;
+    color: white;
+    font-size: 1.15rem;
+    cursor: pointer;
+}
