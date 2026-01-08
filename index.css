@@ -45,3 +45,17 @@ form input{
     align-items: center;
     margin-top: 2rem;
 }
+
+.select-container img{
+    max-width: 2rem;
+}
+
+.select-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 6rem;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    border: 1px solid lightgray;
+}
