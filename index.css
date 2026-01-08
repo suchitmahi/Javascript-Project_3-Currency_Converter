@@ -46,6 +46,11 @@ form input{
     margin-top: 2rem;
 }
 
+.dropdown i{
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+}
+
 .select-container img{
     max-width: 2rem;
 }
