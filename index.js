@@ -1,7 +1,9 @@
-const BASE_URL = "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1"
+const BASE_URL = "https://open.er-api.com/v6/latest"
 
 const dropdowns = document.querySelectorAll(".dropdown select");
 const btn = document.querySelector("form button");
+const fromCurr = document.querySelector(".from select");
+const toCurr = document.querySelector(".to select");
 
 for(let select of dropdowns){
     for (currCode in countryList) {
@@ -28,12 +30,33 @@ const updateFlag = (element) => {
     img.src = newSrc;
 }
 
-btn.addEventListener("click", (evt) => {
+btn.addEventListener("click", async (evt) => {
     evt.preventDefault();
-    let amount = document.querySelector(".amount input");
-    let amtVal = amount.value;
-    if (amtVal === "" || amtVal < 1){
+
+    let amountInput = document.querySelector(".amount input");
+    let amtVal = Number(amountInput.value);
+
+    if (amtVal < 1 || isNaN(amtVal)) {
         amtVal = 1;
-        amount.value = "1";
+        amountInput.value = "1";
     }
+
+    const from = fromCurr.value; // ✅ STRING like "USD"
+    const to = toCurr.value;     // ✅ STRING like "INR"
+
+    const URL = `${BASE_URL}/${from}`;
+    console.log("FETCHING 👉", URL);
+
+    const response = await fetch(URL);
+    const data = await response.json();
+
+    if (data.result !== "success") {
+        throw new Error("API failed");
+    }
+
+    const rate = data.rates[to]; // ✅ correct
+    const finalAmount = (amtVal * rate).toFixed(2);
+
+    document.querySelector(".msg").innerText =
+        `${amtVal} ${from} = ${finalAmount} ${to}`;
 });
