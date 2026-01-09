@@ -41,20 +41,15 @@ btn.addEventListener("click", async (evt) => {
         amountInput.value = "1";
     }
 
-    const from = fromCurr.value; // ✅ STRING like "USD"
-    const to = toCurr.value;     // ✅ STRING like "INR"
+    const from = fromCurr.value;
+    const to = toCurr.value;
 
     const URL = `${BASE_URL}/${from}`;
-    console.log("FETCHING 👉", URL);
 
     const response = await fetch(URL);
     const data = await response.json();
 
-    if (data.result !== "success") {
-        throw new Error("API failed");
-    }
-
-    const rate = data.rates[to]; // ✅ correct
+    const rate = data.rates[to];
     const finalAmount = (amtVal * rate).toFixed(2);
 
     document.querySelector(".msg").innerText =
